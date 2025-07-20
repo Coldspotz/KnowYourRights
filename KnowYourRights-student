@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Know Your Rights Chatbot</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; }
+    #chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      max-height: 500px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      z-index: 9999;
+    }
+    #chatbot-header {
+      background: #007BFF;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+    #chatbot-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      font-size: 14px;
+    }
+    .message {
+      margin: 5px 0;
+    }
+    .bot { color: #333; }
+    .user { text-align: right; color: #007BFF; }
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    #chatbot-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+    }
+    #chatbot-input button {
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+    .quick-reply {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px 10px;
+      margin: 3px;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="chatbot-container">
+  <div id="chatbot-header">Know Your Rights Assistant</div>
+  <div id="chatbot-messages">
+    <div class="message bot">
+      👋 Hi! I’m your Know Your Rights Mini Legal Assistant.<br><br>
+      ⚠️ *Disclaimer: I am not a lawyer. I provide general legal information only.*<br><br>
+      What do you want to know today?<br>
+      <div id="quick-replies">
+        <div class="quick-reply">School discipline</div>
+        <div class="quick-reply">Police interactions</div>
+        <div class="quick-reply">Privacy at school</div>
+        <div class="quick-reply">Free speech</div>
+        <div class="quick-reply">LGBTQ+ rights</div>
+        <div class="quick-reply">Immigration status</div>
+        <div class="quick-reply">Reporting abuse</div>
+        <div class="quick-reply">Other questions</div>
+      </div>
+    </div>
+  </div>
+  <div id="chatbot-input">
+    <input type="text" id="user-input" placeholder="Type your message..." />
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+<script>
+  const messages = document.getElementById('chatbot-messages');
+  const input = document.getElementById('user-input');
+  const sendBtn = document.getElementById('send-btn');
+
+  const botReplies = {
+    "school discipline": "🏫 **School Discipline and Suspensions**\n\n✅ Schools must follow due process before suspending or expelling you.\n✅ You have the right to know what rule you broke and why.\n✅ Long-term suspensions require a formal hearing.\n✅ Students with disabilities have extra protections.\n\n🔗 Learn more: https://www.publiccounsel.org/tools/assets/files/YouthRightsGuide.pdf",
+    "police interactions": "🚔 **Police Interactions**\n\n✅ You have the right to remain silent.\n✅ Stay calm and polite.\n✅ Ask if you’re free to go. If yes, walk away.\n✅ If arrested, ask for a lawyer immediately.\n✅ Never lie to police.\n✅ If searched without consent or warrant, note details.\n\n🔗 Learn more: https://www.aclu.org/know-your-rights/stopped-by-police",
+    "privacy at school": "🔒 **Privacy at School**\n\n✅ Schools can search your backpack/locker with reasonable suspicion.\n✅ Phones require stronger justification unless emergency.\n✅ Personal journals/notes can't be searched without reason.\n\n🔗 Learn more: https://www.aclu.org/know-your-rights/students-rights",
+    "free speech": "🗣️ **Free Speech and Expression**\n\n✅ You can express opinions if it doesn’t disrupt learning.\n✅ Schools can't punish you for views outside of school unless causing major disruption.\n\n🔗 Learn more: https://splc.org",
+    "lgbtq+ rights": "🏳️‍🌈 **LGBTQ+ Rights at School**\n\n✅ You have the right to be yourself without discrimination.\n✅ Schools can’t stop you dressing by your gender identity.\n✅ You can form or join GSAs like any club.\n\n🔗 Learn more: https://www.glsen.org/activity/know-your-rights",
+    "immigration status": "🛂 **Immigration Status Concerns**\n\n✅ All students can attend public school regardless of status.\n✅ Schools cannot ask for immigration documents to enroll.\n✅ Never share your status with untrusted people.\n\n🔗 Learn more: https://www.ilrc.org",
+    "reporting abuse": "🚨 **Reporting Abuse or Neglect**\n\n✅ Tell a trusted adult, teacher, counselor, or call a hotline.\n✅ Call/text 988 for mental health crises.\n✅ Call 1-800-4-A-CHILD (1-800-422-4453) for more information.
